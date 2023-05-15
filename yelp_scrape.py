@@ -31,6 +31,6 @@ for business in businesses:
 # Create a DataFrame from the list of dictionaries
 df = pd.DataFrame(business_list)
 
-# Print the DataFrame
-print(df)
+# Save the DataFrame
+df.to_csv('sushi.csv', index=False)
 
