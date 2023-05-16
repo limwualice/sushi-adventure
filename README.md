@@ -1,6 +1,6 @@
-# Beverly Grove Sushi Adventure
+# Los Angeles Sushi Adventure
 
-Welcome to the Beverly Grove Sushi Adventure project! This project allows you to scrape data from Yelp using their API.
+Welcome to the Los Angeles Sushi Adventure project! This project allows you to scrape data from Yelp using their API.
 
 ## Getting Started
 
