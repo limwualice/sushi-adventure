@@ -1,6 +1,6 @@
+import random
 import pickle
 import pandas as pd
-
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
@@ -33,12 +33,14 @@ def predict():
     # Filter the data frame based on the predicted cluster
     filtered_df = df[df['Cluster'] == cluster]
 
-    # Get the top 5 sushi restaurants
-    top_restaurants = filtered_df.head(5)['Name'].tolist()
+    # Get all the sushi restaurants in the filtered cluster
+    restaurants = filtered_df['Name'].tolist()
 
-    # Render the template with the top 5 sushi restaurants
-    return render_template('result.html', restaurants=top_restaurants)
+    # Randomly select 5 sushi restaurants
+    random_restaurants = random.sample(restaurants, k=min(5, len(restaurants)))
 
+    # Render the template with the random 5 sushi restaurants
+    return render_template('result.html', restaurants=random_restaurants)
 
 if __name__ == '__main__':
     app.run(port=5001)
