@@ -2,15 +2,17 @@
 <html>
 <head>
     <title>Sushi Restaurant Recommender</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
 </head>
 <body>
     <h1>Sushi Restaurant Recommender</h1>
     <form action="/predict" method="post">
-        <label for="rating">Rating:</label>
+        <label for="rating">Rating (1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, or 5):</label>
         <input type="text" id="rating" name="rating"><br><br>
-        <label for="reviews">Reviews:</label>
+        <label for="reviews">Number of Reviews:</label>
         <input type="text" id="reviews" name="reviews"><br><br>
-        <label for="price">Price:</label>
+        <label for="price">Price in Number of '$' (for $ input 1, $$ input 2, $$$ input 3, $$$$ input 4):</label>
         <input type="text" id="price" name="price"><br><br>
         <input type="submit" value="Predict">
     </form>
