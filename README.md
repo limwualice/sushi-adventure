@@ -16,7 +16,7 @@ To get started with this project, follow the instructions below:
 1. Clone the repository:
 
    ```shell
-   git clone https://github.com/limwualice/data-engineering.git
+   git clone https://github.com/limwualice/sushi-adventure.git
    ```
 
 2. Change to the project directory:
