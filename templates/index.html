@@ -3,17 +3,42 @@
 <head>
     <title>Sushi Restaurant Recommender</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-
 </head>
 <body>
     <h1>Sushi Restaurant Recommender</h1>
-    <form action="/predict" method="post">
-        <label for="rating">Rating (1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, or 5):</label>
-        <input type="text" id="rating" name="rating"><br><br>
+    <p>Welcome to our website, your ultimate guide to exploring the vibrant sushi scene in Los Angeles. As the sushi capital of the West Coast, Los Angeles offers an incredible array of sushi restaurants, ranging from traditional omakase experiences to trendy fusion spots.<br><br>
+
+        Our sushi restaurant recommender is designed exclusively for Los Angeles, ensuring that you uncover the finest sushi establishments in the city. Whether you're a local resident or visiting from out of town, our recommender system leverages ratings, reviews, and price information to curate personalized recommendations that cater to your sushi preferences.<br><br>
+        
+        From the iconic sushi destinations in Little Tokyo to the trendy sushi joints in Hollywood, our website will lead you on a culinary adventure across Los Angeles. Immerse yourself in the rich flavors of fresh sashimi, delectable rolls, and exquisite nigiri, all within the vibrant backdrop of LA's diverse neighborhoods.<br><br>
+        
+        Don't miss out on the opportunity to savor the best sushi experiences Los Angeles has to offer. Let our sushi restaurant recommender be your trusted companion in discovering hidden gems and must-visit establishments. Begin your sushi exploration in the City of Angels and indulge in the artistry of sushi craftsmanship that awaits you.</p>
+    <form class="my-form" action="/predict" method="post">
+        <label for="rating">Rating:</label>
+        <select id="rating" name="rating">
+            <option value="1">1</option>
+            <option value="1.5">1.5</option>
+            <option value="2">2</option>
+            <option value="2.5">2.5</option>
+            <option value="3">3</option>
+            <option value="3.5">3.5</option>
+            <option value="4">4</option>
+            <option value="4.5">4.5</option>
+            <option value="5">5</option>
+        </select><br><br>
+        
         <label for="reviews">Number of Reviews:</label>
         <input type="text" id="reviews" name="reviews"><br><br>
-        <label for="price">Price in Number of '$' (for $ input 1, $$ input 2, $$$ input 3, $$$$ input 4):</label>
-        <input type="text" id="price" name="price"><br><br>
+       
+        
+        <label for="price">Price:</label>
+        <select id="price" name="price">
+            <option value="1">1 ($)</option>
+            <option value="2">2 ($$)</option>
+            <option value="3">3 ($$$)</option>
+            <option value="4">4 ($$$$)</option>
+        </select><br><br>
+        
         <input type="submit" value="Predict">
     </form>
 </body>

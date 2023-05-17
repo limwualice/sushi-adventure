@@ -24,6 +24,24 @@ def predict():
     reviews = request.form.get('reviews')
     price = request.form.get('price')
 
+    # Validate the input values
+    if not rating or not reviews or not price:
+        if not rating:
+            return "Your rating was wrong", 400
+        elif not reviews:
+            return "Your reviews was wrong", 400
+        elif not price:
+            return "Your price was wrong", 400
+        else:
+            return "something else", 400
+
+    try:
+        rating = float(rating)
+        reviews = float(reviews)
+        price = float(price)
+    except ValueError:
+        return "Invalid input values", 400
+
     # Perform the prediction using the KMeans model
     cluster = kmeans.predict([[rating, reviews, price]])
 
