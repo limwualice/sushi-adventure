@@ -1,6 +1,6 @@
 # Los Angeles Sushi Adventure!
 
-Welcome to the Los Angeles Sushi Adventure project! This project allows you to scrape data from Yelp using their API.
+Welcome to the Los Angeles Sushi Adventure project! This project allows you to scrape data from Yelp using their API, run a machine learning model to predict which sushi restaurants the user would enjoy, and then output 5 sushi restaurants!
 
 ## Getting Started
 
