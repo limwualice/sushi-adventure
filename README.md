@@ -68,8 +68,6 @@ Building the Docker Image
     Open a terminal or command prompt and navigate to the root directory of your project.
     Build your Docker image using the following command:
 
-    less
-
     docker build -t gcr.io/[PROJECT_ID]/sushi-adventure-app:[TAG] .
 
     Replace [PROJECT_ID] with your GCP project ID and [TAG] with a version or tag name for your image.
@@ -82,13 +80,10 @@ gcloud auth configure-docker
 
 Tag the Docker image with the GCR registry path:
 
-less
 
 docker tag gcr.io/[PROJECT_ID]/sushi-adventure-app:[TAG]
 
 Push the Docker image to Container Registry:
-
-less
 
     docker push gcr.io/[PROJECT_ID]/sushi-adventure-app:[TAG]
 
