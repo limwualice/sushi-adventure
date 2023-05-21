@@ -54,16 +54,70 @@ The script will retrieve data from Yelp using the provided access token and disp
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.
 
-## Deployment on Google Cloud Platform (GCP)
+Deployment to Google Cloud Platform (GCP)
 
-To deploy the Los Angeles Sushi Adventure project on Google Cloud Platform (GCP), follow these additional steps:
+To deploy your Los Angeles Sushi Adventure project to Google Cloud Platform, follow the steps below:
+Prerequisites
 
-1. Set up a GCP account and project.
-2. Build and push a Docker image for the project.
-3. Deploy the Docker image on GCP using Cloud Run.
-4. Update the necessary configurations and environment variables to work with the GCP deployment.
+    You should have a GCP account with the necessary permissions to create and configure resources.
+    Ensure that you have the Google Cloud SDK (gcloud) command-line tool installed and configured with your GCP project credentials. You can install the SDK by following the instructions here: Installing Google Cloud SDK.
 
-For detailed deployment instructions, please refer to the [GCP Deployment Guide](deployment-guide.md).
+Building the Docker Image
+
+    Make sure you have Docker installed on your local machine.
+    Open a terminal or command prompt and navigate to the root directory of your project.
+    Build your Docker image using the following command:
+
+    less
+
+    docker build -t gcr.io/[PROJECT_ID]/sushi-adventure-app:[TAG] .
+
+    Replace [PROJECT_ID] with your GCP project ID and [TAG] with a version or tag name for your image.
+
+Pushing the Docker Image to Container Registry
+
+    After the Docker image is built successfully, authenticate Docker to use your GCP project's Container Registry. Run the following command:
+
+gcloud auth configure-docker
+
+Tag the Docker image with the GCR registry path:
+
+less
+
+docker tag gcr.io/[PROJECT_ID]/sushi-adventure-app:[TAG]
+
+Push the Docker image to Container Registry:
+
+less
+
+    docker push gcr.io/[PROJECT_ID]/sushi-adventure-app:[TAG]
+
+    The image will be uploaded to your GCP project's Container Registry.
+
+Deploying to Google Cloud Run
+
+    Open a terminal or command prompt.
+
+    Deploy your containerized application to Google Cloud Run using the following command:
+
+    diff
+
+    gcloud run deploy sushi-adventure \
+    --image gcr.io/[PROJECT_ID]/sushi-adventure-app:[TAG] \
+    --platform managed \
+    --port=5001
+
+    Replace [PROJECT_ID] with your GCP project ID and [TAG] with the version or tag of your Docker image.
+
+    Follow the prompts to select your preferred region and confirm the deployment.
+
+    Once the deployment is complete, you will receive a URL where your application is accessible.
+
+Accessing Your Deployed Application
+
+    After the deployment is successful, you can access your deployed application using the URL provided by Google Cloud Run.
+
+Congratulations! Your Los Angeles Sushi Adventure project is now deployed on Google Cloud Platform.
 
 ## License
 
