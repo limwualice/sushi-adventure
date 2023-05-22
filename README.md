@@ -54,9 +54,10 @@ The script will retrieve data from Yelp using the provided access token and disp
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.
 
-Deployment to Google Cloud Platform (GCP)
+## Deployment to Google Cloud Platform (GCP)
 
 To deploy your Los Angeles Sushi Adventure project to Google Cloud Platform, follow the steps below:
+
 Prerequisites
 
     You should have a GCP account with the necessary permissions to create and configure resources.
