@@ -1,9 +1,6 @@
 import requests
 import pandas as pd
 from config import ACCESS_TOKEN
-import ast
-
-
 
 def get_reviews(business_id, limit):
     url = f'https://api.yelp.com/v3/businesses/{business_id}/reviews'
@@ -11,7 +8,7 @@ def get_reviews(business_id, limit):
         'Authorization': f'Bearer {ACCESS_TOKEN}'
     }
     params = {
-        'limit': limit  # Set the limit to 21 reviews per request
+        'limit': limit
     }
     response = requests.get(url, headers=headers, params=params)
     data = response.json()
@@ -32,7 +29,7 @@ headers = {
 business_list = []  # Initialize an empty list to store results
 
 # Make multiple requests with different offsets
-for offset in range(0, 10, search_params['limit']):
+for offset in range(0, 1000, search_params['limit']):
     
     search_params['offset'] = offset
     search_response = requests.get(search_url, headers=headers, params=search_params)
@@ -47,11 +44,10 @@ for offset in range(0, 10, search_params['limit']):
         price = business.get('price', 'N/A')
         location = business['location']
 
-    # Fetch the reviews for the current business
+        # Fetch the reviews for the current business
         business_id = business['id']
         reviews = get_reviews(business_id, 100)
         review_texts = [review['text'] for review in reviews]
-
 
         business_list.append({
             'Name': name,
