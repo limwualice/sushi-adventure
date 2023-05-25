@@ -14,8 +14,8 @@
         
         Don't miss out on the opportunity to savor the best sushi experiences Los Angeles has to offer. Let our sushi restaurant recommender be your trusted companion in discovering hidden gems and must-visit establishments. Begin your sushi exploration in the City of Angels and indulge in the artistry of sushi craftsmanship that awaits you.</p>
     <form class="my-form" action="/predict" method="post">
-        <label for="rating">Rating:</label>
-        <select id="rating" name="rating">
+        <label for="stars_x">Rating:</label>
+        <select id="stars_x" name="stars_x">
             <option value="1">1</option>
             <option value="1.5">1.5</option>
             <option value="2">2</option>
@@ -25,19 +25,68 @@
             <option value="4">4</option>
             <option value="4.5">4.5</option>
             <option value="5">5</option>
+            <option value="I don't care" selected>I don't care</option>
         </select><br><br>
         
-        <label for="reviews">Number of Reviews:</label>
-        <input type="text" id="reviews" name="reviews"><br><br>
+        <label for="RestaurantsTakeOut">Take out</label>
+        <select id="RestaurantsTakeOut" name="RestaurantsTakeOut">
+            <option value="True">Yes</option>
+            <option value="I don't care" selected>I don't care</option>
+        </select><br><br>
        
         
-        <label for="price">Price:</label>
-        <select id="price" name="price">
-            <option value="1">1 ($)</option>
-            <option value="2">2 ($$)</option>
-            <option value="3">3 ($$$)</option>
-            <option value="4">4 ($$$$)</option>
+        <label for="RestaurantsDelivery">Delivery</label>
+        <select id="RestaurantsDelivery" name="RestaurantsDelivery">
+            <option value="Yes">Yes</option>
+            <option value="I don't care" selected>I don't care</option>
         </select><br><br>
+
+        <label for="BusinessAcceptsCreditCards">Accepts Credit Cards</label>
+        <select id="BusinessAcceptsCreditCards" name="BusinessAcceptsCreditCards">
+            <option value="Yes">Yes</option>
+            <option value="I don't care" selected>I don't care</option>
+        </select><br><br>
+
+        <label for="RestaurantsPriceRange2">Price Range ($-$$$$)</label>
+        <select id="RestaurantsPriceRange2" name="RestaurantsPriceRange2">
+            <option value="1">$</option>
+            <option value="2">$$</option>
+            <option value="3">$$$</option>
+            <option value="4">$$$$</option>
+            <option value="I don't care" selected>I don't care</option>
+        </select><br><br>
+
+        <label for="RestaurantsReservations">Reservations</label>
+        <select id="RestaurantsReservations" name="RestaurantsReservations">
+            <option value="Yes">Yes</option>
+            <option value="I don't care" selected>I don't care</option>
+        </select><br><br>
+
+        <label for="RestaurantsGoodForGroups">Good for groups</label>
+        <select id="RestaurantsGoodForGroups" name="RestaurantsGoodForGroups">
+            <option value="Yes">Yes</option>
+            <option value="I don't care" selected>I don't care</option>
+        </select><br><br>
+
+        <label for="HasTV">Has a TV</label>
+        <select id="HasTV" name="HasTV">
+            <option value="Yes">Yes</option>
+            <option value="I don't care" selected>I don't care</option>
+        </select><br><br>
+
+        <label for="GoodForKids">Good for kids</label>
+        <select id="GoodForKids" name="GoodForKids">
+            <option value="Yes">Yes</option>
+            <option value="I don't care" selected>I don't care</option>
+        </select><br><br>
+
+        <label for="valet">Has Valet</label>
+        <select id="valet" name="valet">
+            <option value="Yes">Yes</option>
+            <option value="I don't care" selected>I don't care</option>
+        </select><br><br>
+
+       
         
         <input type="submit" value="Predict">
     </form>

@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sushi Restaurant Recommender - Results</title>
+    <title>Restaurant Recommender - Results</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Sushi Restaurant Recommendations</h1>
-    <ul>
-        {% for restaurant in restaurants %}
-            <li>{{ restaurant }}</li>
-        {% endfor %}
-    </ul>
+    <h1>Restaurant Recommendations</h1>
+    {% if filtered_data.empty %}
+        <p>No restaurants found based on your criteria.</p>
+    {% else %}
+        <ul>
+            {% for index, row in filtered_data.iterrows() %}
+                <li>{{ row['name'] }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 </body>
 </html>
+
