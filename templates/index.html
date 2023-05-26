@@ -1,94 +1,277 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sushi Restaurant Recommender</title>
+    <title>Pizza Restaurant Recommender</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function() {
+          var cities = ['Ardmore', 'Tampa', 'Tucson', 'Warrington', 'Saint Louis',
+       'Santa Barbara', 'Florence Township', 'Philadelphia', 'Wilmington',
+       'Boise', 'University City', 'Indianapolis', 'Godfrey',
+       'Granite City', 'Sherwood Park', 'Cherry Hill', 'West Chester',
+       'Broomall', 'Chalfont', 'Ewing Township', 'Blue Bell', 'Aston',
+       'Oldsmar', 'Goodlettsville', 'Antioch', 'Edmonton', 'Lansdowne',
+       'Brentwood', 'Lansdale', 'Secane', 'Fishers', 'Bryn Mawr',
+       'Willingboro', 'Fenton', 'Hudson', 'Nashville', 'Westville',
+       'Berlin', 'Sparks', 'Brookhaven', 'Palm Harbor', 'Pottstown',
+       'Trinity', 'New Port Richey', 'Morton', 'Greenwood',
+       'Conshohocken', 'Clearwater', 'Reno', 'Woodstown',
+       'Hendersonville', 'Southport', 'Edwardsville', 'New Orleans',
+       'Chester Springs', 'Franklin', 'Meridian', 'Phoenixville',
+       'Pinellas Park', 'Royersford', 'Thorndale', 'Mooresville',
+       'Oro Valley', 'Williamstown', 'White House', 'East Norriton',
+       'PHILA', 'Willow Grove', 'Saint Charles', 'Florissant',
+       'Westampton Township', 'Trenton', 'Warminster', 'Bensalem',
+       'Seminole', 'Odessa', 'O Fallon', 'Oaks', 'Feasterville Trevose',
+       'Mt. Juliet', 'Maryland Heights', 'Avon', 'Temple Terrace',
+       'Haddonfield', 'Spring Hill', 'Belle Chasse', 'Upper Darby',
+       'Spanish Springs', 'Southampton', 'Plant City', 'Newark',
+       'Upper Pittsgrove', 'Sun City Center', 'Maple Shade', 'Bellmawr',
+       'Largo', 'Haddon Heights', 'Fort Washington', 'Holiday',
+       'Riverview', 'Alton', 'Laurel Springs', 'Norristown', 'Zionsville',
+       'Havertown', 'Pennsauken', 'Arnold', 'Saint Petersburg',
+       'St. Petersburg', 'Kenner', 'Pitman', 'Exton', 'St. Louis',
+       'Runnemede', 'Old Hickory', 'Collegeville', 'Primos', 'Glendora',
+       'Land O Lakes', 'Ridley Park', 'Malvern', 'Montgomeryville',
+       'Coatesville', 'Cinnaminson', 'Abington', 'Clearwater Beach',
+       'Horsham', 'Newtown', 'Jenkintown', 'Woodbury', 'Fairless Hills',
+       'Harvey', 'Wayne', 'Levittown', 'Webster Groves', 'Hazelwood',
+       'Metairie', 'Plainfield', 'Tabernacle', 'Schwenksville', 'Sewell',
+       'Hamilton Township', 'Madison', 'Sicklerville', 'Brandon',
+       'Columbus', 'St Louis', 'New Castle', 'Downingtown', 'Lebanon',
+       'Silverdale', 'Lithia', 'Voorhees', 'Valrico', 'Narberth', 'Aldan',
+       'Wesley Chapel', 'Boyertown', 'Glassboro', 'Hermitage',
+       'Drexel Hill', 'St Albert', 'Fairview Heights', 'Harleysville',
+       'Bridgeport', 'Camden', 'Tuscon', "O'Fallon", 'Elk Township',
+       'Norwood', 'Marcus Hook', 'King of Prussia', 'Chesterbrook',
+       'Trevose', 'Folsom', 'Paulsboro', 'Smyrna', 'Swansea', 'Eagle',
+       'Seffner', 'Clifton Heights', 'Crum Lynne', 'Medford',
+       'Port Richey', 'Dunedin', 'Bridgeton', 'Kennett Square', 'Troy',
+       'Collinsville', 'Quakertown', 'Claymont', 'Media', 'Apollo Beach',
+       'Somerdale', 'Mount Laurel', 'Isla Vista', 'Swarthmore',
+       'Clementon', 'Winslow Township', 'Waterloo', 'Manchester',
+       'Washington Township', 'Croydon', 'Carmel', 'Burlington',
+       'Vincentown', 'Chesterfield', 'Penndel', 'Sahuarita',
+       'Mount Juliet', 'Arabi', 'Tarpon Springs', 'Clayton', 'Malaga',
+       'Glenolden', 'Doylestown', 'Souderton', 'McCordsville', 'Hatboro',
+       'Hockessin', 'La Vergne', 'Ballwin', 'Bristol', 'Glen Carbon',
+       'West Deptford', 'Mantua', 'Ewing', 'Pilesgrove', 'Goleta',
+       'New Palestine', "Land O' Lakes", 'Imperial', 'Belleville',
+       'Spring City', 'Beech Grove', 'Woodbury Heights', 'Darby',
+       'Oaklyn', 'Yardley', 'Affton', 'Erial', 'Folcroft', 'Westwego',
+       'Glenside', 'Mount Royal', 'Salem', 'Gibsonton', 'Mullica Hill',
+       'Waterford Works', 'Glen Mills', 'Ambler', 'Pennsville',
+       'Green Valley', 'Danville', 'Wynnewood', 'Langhorne', 'Lutz',
+       'Gloucester City', 'Greenfield', 'Pine Hill', 'Marana',
+       'Newtown Square', 'Camby', 'New Britain', 'Flourtown', 'Gretna',
+       'Gilbertsville', 'Whitestown', 'Kulpsville', 'Zephyrhills',
+       'Springfield', 'Dublin', 'Essington', 'Lumberton', 'Hainesport',
+       'Ferguson', 'Brownsburg', 'Chester', 'Safety Harbor', 'Devon',
+       'Linfield', 'North Wales', 'Morrisville', 'Sappington', 'Woodlyn',
+       'Kirkwood', 'Marrero', 'Westampton', 'Haddon Township',
+       'Treasure Island', 'Wyncote', 'Dresher', 'Lambertville', 'Berwyn',
+       'Audubon', 'Frazer', 'Speedway', 'Brooklawn', 'Paoli',
+       'Bordentown', 'Mount Holly', 'Richboro',
+       'Lower Southampton Township', 'Moorestown', 'Madeira Beach',
+       'Prospect Park', 'Gallatin', 'Bethalto', 'Kuna', 'South Pasadena',
+       'Marlton', 'Delanco', 'Penns Grove', 'Deptford', 'Wenonah',
+       'Gulfport', 'Sharon Hill', 'New Hope', 'Blackwood', 'Carpinteria',
+       'Elkins Park', 'Turnersville', 'Harahan', 'Saint Ann',
+       'Christiana', 'Westmont', 'Richmond Heights', 'Columbia',
+       'Noblesville', 'Kimberton', 'Franklinville', 'Swedesboro',
+       'Maplewood', 'Bala Cynwyd', 'Hernando Bch', 'Collingswood',
+       'Sellersville', 'Verdi', 'Oreland', 'Mount Holly,']; // Array containing all the cities
+        
+          // Fetch the list of cities from the server using AJAX or include it directly in the JavaScript code
+        
+          $("#city").autocomplete({
+            source: cities,
+            minLength: 2, // Minimum number of characters to start showing suggestions
+            select: function(event, ui) {
+              // Optional: Handle the selection event
+            }
+          });
+        });
+        </script>
+        <!-- <style>
+            .grid-container {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 10px;
+            }
+    
+            .grid-item {
+                grid-column: span 1;
+            }
+        </style> -->
+        
+
 </head>
 <body>
-    <h1>Sushi Restaurant Recommender</h1>
-    <p>Welcome to our website, your ultimate guide to exploring the vibrant sushi scene in Los Angeles. As the sushi capital of the West Coast, Los Angeles offers an incredible array of sushi restaurants, ranging from traditional omakase experiences to trendy fusion spots.<br><br>
-
-        Our sushi restaurant recommender is designed exclusively for Los Angeles, ensuring that you uncover the finest sushi establishments in the city. Whether you're a local resident or visiting from out of town, our recommender system leverages ratings, reviews, and price information to curate personalized recommendations that cater to your sushi preferences.<br><br>
-        
-        From the iconic sushi destinations in Little Tokyo to the trendy sushi joints in Hollywood, our website will lead you on a culinary adventure across Los Angeles. Immerse yourself in the rich flavors of fresh sashimi, delectable rolls, and exquisite nigiri, all within the vibrant backdrop of LA's diverse neighborhoods.<br><br>
-        
-        Don't miss out on the opportunity to savor the best sushi experiences Los Angeles has to offer. Let our sushi restaurant recommender be your trusted companion in discovering hidden gems and must-visit establishments. Begin your sushi exploration in the City of Angels and indulge in the artistry of sushi craftsmanship that awaits you.</p>
+    <h1>Pizza Restaurant Recommender</h1>
+    <p>WHAT KIND OF PIZZA DO YOU WANT?</p>
     <form class="my-form" action="/predict" method="post">
-        <label for="stars_x">Rating:</label>
-        <select id="stars_x" name="stars_x">
-            <option value="1">1</option>
-            <option value="1.5">1.5</option>
-            <option value="2">2</option>
-            <option value="2.5">2.5</option>
-            <option value="3">3</option>
-            <option value="3.5">3.5</option>
-            <option value="4">4</option>
-            <option value="4.5">4.5</option>
-            <option value="5">5</option>
-            <option value="I don't care" selected>I don't care</option>
-        </select><br><br>
-        
-        <label for="RestaurantsTakeOut">Take out</label>
-        <select id="RestaurantsTakeOut" name="RestaurantsTakeOut">
-            <option value="True">Yes</option>
-            <option value="I don't care" selected>I don't care</option>
-        </select><br><br>
-       
-        
-        <label for="RestaurantsDelivery">Delivery</label>
-        <select id="RestaurantsDelivery" name="RestaurantsDelivery">
-            <option value="Yes">Yes</option>
-            <option value="I don't care" selected>I don't care</option>
-        </select><br><br>
+        <div class="grid-container">
 
-        <label for="BusinessAcceptsCreditCards">Accepts Credit Cards</label>
-        <select id="BusinessAcceptsCreditCards" name="BusinessAcceptsCreditCards">
-            <option value="Yes">Yes</option>
-            <option value="I don't care" selected>I don't care</option>
-        </select><br><br>
+            <div class="grid-item">
+                <label for="state">State:</label>
+                <select id="state" name="state">
+                    <option value='PA'>PA</option>
+                    <option value= 'FL'>FL</option>
+                    <option value='AZ'>AZ</option>
+                    <option value='MO'>MO</option>
+                    <option value='CA'>CA</option>
+                    <option value='NJ'>NJ</option>
+                    <option value='DE'>DE</option>
+                    <option value='ID'>ID</option>
+                    <option value='IN'>IN</option>
+                    <option value='IL'>IL</option>
+                    <option value='AB'>AB</option>
+                    <option value='TN'>TN</option>
+                    <option value='NV'>NV</option>
+                    <option value='LA'>LA</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select>
+            <!-- </div> -->
 
-        <label for="RestaurantsPriceRange2">Price Range ($-$$$$)</label>
-        <select id="RestaurantsPriceRange2" name="RestaurantsPriceRange2">
-            <option value="1">$</option>
-            <option value="2">$$</option>
-            <option value="3">$$$</option>
-            <option value="4">$$$$</option>
-            <option value="I don't care" selected>I don't care</option>
-        </select><br><br>
+            <!-- <div class="grid-item"></div> -->
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" placeholder="Enter city name">
+            <!-- </div> -->
 
-        <label for="RestaurantsReservations">Reservations</label>
-        <select id="RestaurantsReservations" name="RestaurantsReservations">
-            <option value="Yes">Yes</option>
-            <option value="I don't care" selected>I don't care</option>
-        </select><br><br>
+            <!-- <div class="grid-item"> -->
+                <label for="stars_x">Rating:</label>
+                <select id="stars_x" name="stars_x">
+                    <option value=1>1</option>
+                    <option value=1.5>1.5</option>
+                    <option value=2>2</option>
+                    <option value=2.5>2.5</option>
+                    <option value=3>3</option>
+                    <option value=3.5>3.5</option>
+                    <option value=4>4</option>
+                    <option value=4.5>4.5</option>
+                    <option value=5>5</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select>
+            </div>
 
-        <label for="RestaurantsGoodForGroups">Good for groups</label>
-        <select id="RestaurantsGoodForGroups" name="RestaurantsGoodForGroups">
-            <option value="Yes">Yes</option>
-            <option value="I don't care" selected>I don't care</option>
-        </select><br><br>
+            <div class="grid-item">
+                <label for="RestaurantsTakeOut">Take out</label>
+                <select id="RestaurantsTakeOut" name="RestaurantsTakeOut">
+                    <option value="Yes">Yes</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select>
+            <!-- </div> -->
 
-        <label for="HasTV">Has a TV</label>
-        <select id="HasTV" name="HasTV">
-            <option value="Yes">Yes</option>
-            <option value="I don't care" selected>I don't care</option>
-        </select><br><br>
+            <!-- <div class="grid-item"> -->
+                <label for="RestaurantsDelivery">Delivery</label>
+                <select id="RestaurantsDelivery" name="RestaurantsDelivery">
+                    <option value="Yes">Yes</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select>
+            <!-- </div> -->
 
-        <label for="GoodForKids">Good for kids</label>
-        <select id="GoodForKids" name="GoodForKids">
-            <option value="Yes">Yes</option>
-            <option value="I don't care" selected>I don't care</option>
-        </select><br><br>
+            <!-- <div class="grid-item"> -->
+                <label for="BusinessAcceptsCreditCards">Accepts Credit Cards</label>
+                <select id="BusinessAcceptsCreditCards" name="BusinessAcceptsCreditCards">
+                    <option value="Yes">Yes</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select>
+            </div>
 
-        <label for="valet">Has Valet</label>
-        <select id="valet" name="valet">
-            <option value="Yes">Yes</option>
-            <option value="I don't care" selected>I don't care</option>
-        </select><br><br>
+            <div class="grid-item">
+                <label for="RestaurantsPriceRange2">Price Range ($-$$$$)</label>
+                <select id="RestaurantsPriceRange2" name="RestaurantsPriceRange2">
+                    <option value=1>$</option>
+                    <option value=2>$$</option>
+                    <option value=3>$$$</option>
+                    <option value=4>$$$$</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select>
+            <!-- </div> -->
 
-       
-        
-        <input type="submit" value="Predict">
+            <!-- <div class="grid-item"> -->
+                <label for="RestaurantsReservations">Reservations</label>
+                <select id="RestaurantsReservations" name="RestaurantsReservations">
+                    <option value="Yes">Yes</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select>
+            <!-- </div> -->
+
+            <!-- <div class="grid-item"> -->
+                <label for="RestaurantsGoodForGroups">Good for groups</label>
+                <select id="RestaurantsGoodForGroups" name="RestaurantsGoodForGroups">
+                    <option value="Yes">Yes</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select>
+            </div>
+
+            <div class="grid-item">
+                <label for="HasTV">Has a TV</label>
+                <select id="HasTV" name="HasTV">
+                    <option value="Yes">Yes</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select>
+            <!-- </div> -->
+
+            <!-- <div class="grid-item"> -->
+                <label for="GoodForKids">Good for kids</label>
+                <select id="GoodForKids" name="GoodForKids">
+                    <option value="Yes">Yes</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select>
+            <!-- </div> -->
+
+            <!-- <div class="grid-item"> -->
+                <label for="valet">Has Valet</label>
+                <select id="valet" name="valet">
+                    <option value="Yes">Yes</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select>
+            </div>
+            <div class="grid-item">
+                <label for="RestaurantsAttire">RestaurantsAttire</label>
+                <select id="RestaurantsAttire" name="RestaurantsAttire">
+                    <option value="casual">Casual</option>
+                    <option value="formal">Formal</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select>
+            <!-- </div> -->
+
+            <!-- <div class="grid-item"> -->
+                <label for="validated">Has Validated Parking</label>
+                <select id="validated" name="validated">
+                    <option value="Yes">Yes</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select>
+            <!-- </div> -->
+            <!-- <div class="grid-item"> -->
+                <label for="garage">Has Garage Parking</label>
+                <select id="garage" name="garage">
+                    <option value="Yes">Yes</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select>
+            </div>
+            <div class="grid-item">
+                <label for="lot">Has Lot Parking</label>
+                <select id="lot" name="lot">
+                    <option value="Yes">Yes</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select>
+            <!-- </div> -->
+            <!-- <div class="grid-item"> -->
+                <label for="Alcohol">Has Alcohol</label>
+                <select id="Alcohol" name="Alcohol">
+                    <option value="beer_and_wine">Has Beer and Wine</option>
+                    <option value="full_bar">Has a Full Bar</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select>
+            </div>
+        </div>
+        <input type="submit" value="FIND PIZZA">
     </form>
 </body>
 </html>

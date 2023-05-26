@@ -3,18 +3,81 @@
 <head>
     <title>Restaurant Recommender - Results</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+        .empty-message {
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
     <h1>Restaurant Recommendations</h1>
-    {% if filtered_data.empty %}
-        <p>No restaurants found based on your criteria.</p>
+    {% if restaurants.empty %}
+        <p class="empty-message">No restaurants found based on your criteria.</p>
     {% else %}
-        <ul>
-            {% for index, row in filtered_data.iterrows() %}
-                <li>{{ row['name'] }}</li>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th{% if column_interests['state'] %} class="highlight"{% endif %}>State</th>
+                <th{% if column_interests['city'] %} class="highlight"{% endif %}>City</th>
+                <th{% if column_interests['stars_x'] %} class="highlight"{% endif %}>Stars</th>
+                <th{% if column_interests['RestaurantsTakeOut'] %} class="highlight"{% endif %}>Take Out</th>
+                <th{% if column_interests['RestaurantsDelivery'] %} class="highlight"{% endif %}>Delivery</th>
+                <th{% if column_interests['BusinessAcceptsCreditCards'] %} class="highlight"{% endif %}>Credit Cards</th>
+                <th{% if column_interests['RestaurantsPriceRange2'] %} class="highlight"{% endif %}>Price Range</th>
+                <th{% if column_interests['RestaurantsReservations'] %} class="highlight"{% endif %}>Reservations</th>
+                <th{% if column_interests['RestaurantsGoodForGroups'] %} class="highlight"{% endif %}>Good for Groups</th>
+                <th{% if column_interests['HasTV'] %} class="highlight"{% endif %}>TV</th>
+                <th{% if column_interests['GoodForKids'] %} class="highlight"{% endif %}>Kids</th>
+                <th{% if column_interests['valet'] %} class="highlight"{% endif %}>Valet</th>
+                <th{% if column_interests['RestaurantsAttire'] %} class="highlight"{% endif %}>Attire</th>
+                <th{% if column_interests['validated'] %} class="highlight"{% endif %}>Validated Parking</th>
+                <th{% if column_interests['garage'] %} class="highlight"{% endif %}>Garage Parking</th>
+                <th{% if column_interests['lot'] %} class="highlight"{% endif %}>Lot Parking</th>
+                <th{% if column_interests['Alcohol'] %} class="highlight"{% endif %}>Alcohol</th>
+            </tr>
+            {% for index, row in restaurants.iterrows() %}
+                <tr>
+                    <td>{{ row['name'] }}</td>
+                    <td{% if column_interests['state'] %} class="highlight"{% endif %}>{{ row['state'] }}</td>
+                    <td{% if column_interests['city'] %} class="highlight"{% endif %}>{{ row['city'] }}</td>
+                    <td{% if column_interests['stars_x'] %} class="highlight"{% endif %}>{{ row['stars_x'] }}</td>
+                    <td{% if column_interests['RestaurantsTakeOut'] %} class="highlight"{% endif %}>{{ row['RestaurantsTakeOut'] }}</td>
+                    <td{% if column_interests['RestaurantsDelivery'] %} class="highlight"{% endif %}>{{ row['RestaurantsDelivery'] }}</td>
+                    <td{% if column_interests['BusinessAcceptsCreditCards'] %} class="highlight"{% endif %}>{{ row['BusinessAcceptsCreditCards'] }}</td>
+                    <td{% if column_interests['RestaurantsPriceRange2'] %} class="highlight"{% endif %}>{{ row['RestaurantsPriceRange2'] }}</td>
+                    <td{% if column_interests['RestaurantsReservations'] %} class="highlight"{% endif %}>{{ row['RestaurantsReservations'] }}</td>
+                    <td{% if column_interests['RestaurantsGoodForGroups'] %} class="highlight"{% endif %}>{{ row['RestaurantsGoodForGroups'] }}</td>
+                    <td{% if column_interests['HasTV'] %} class="highlight"{% endif %}>{{ row['HasTV'] }}</td>
+                    <td{% if column_interests['GoodForKids'] %} class="highlight"{% endif %}>{{ row['GoodForKids'] }}</td>
+                    <td{% if column_interests['valet'] %} class="highlight"{% endif %}>{{ row['valet'] }}</td>
+                    <td{% if column_interests['RestaurantsAttire'] %} class="highlight"{% endif %}>{{ row['RestaurantsAttire'] }}</td>
+                    <td{% if column_interests['validated'] %} class="highlight"{% endif %}>{{ row['validated'] }}</td>
+                    <td{% if column_interests['garage'] %} class="highlight"{% endif %}>{{ row['garage'] }}</td>
+                    <td{% if column_interests['lot'] %} class="highlight"{% endif %}>{{ row['lot'] }}</td>
+                    <td{% if column_interests['Alcohol'] %} class="highlight"{% endif %}>{{ row['Alcohol'] }}</td>
+                </tr>
             {% endfor %}
-        </ul>
+        </table>
     {% endif %}
 </body>
 </html>
-
