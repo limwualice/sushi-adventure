@@ -150,7 +150,7 @@ def predict():
     # Get the unique restaurant names
     restaurants = filtered_df[['city','state','name','stars_x','RestaurantsTakeOut', 'RestaurantsDelivery','BusinessAcceptsCreditCards','RestaurantsPriceRange2',
                                'RestaurantsReservations', 'RestaurantsGoodForGroups','HasTV', 'GoodForKids', 'valet','RestaurantsAttire', 'validated',
-                               'garage', 'lot', 'Alcohol'
+                               'garage', 'lot', 'Alcohol', 'refine'
     ]]
 
     return render_template('result.html', restaurants=restaurants, column_interests=column_interests)

@@ -37,10 +37,10 @@
         <table>
             <tr>
                 <th>Name</th>
-                <th{% if column_interests['state'] %} class="highlight"{% endif %}>State</th>
-                <th{% if column_interests['city'] %} class="highlight"{% endif %}>City</th>
+                <!-- <th{% if column_interests['state'] %} class="highlight"{% endif %}>State</th> -->
+                <!-- <th{% if column_interests['city'] %} class="highlight"{% endif %}>City</th> -->
                 <th{% if column_interests['stars_x'] %} class="highlight"{% endif %}>Stars</th>
-                <th{% if column_interests['RestaurantsTakeOut'] %} class="highlight"{% endif %}>Take Out</th>
+                <!-- <th{% if column_interests['RestaurantsTakeOut'] %} class="highlight"{% endif %}>Take Out</th>
                 <th{% if column_interests['RestaurantsDelivery'] %} class="highlight"{% endif %}>Delivery</th>
                 <th{% if column_interests['BusinessAcceptsCreditCards'] %} class="highlight"{% endif %}>Credit Cards</th>
                 <th{% if column_interests['RestaurantsPriceRange2'] %} class="highlight"{% endif %}>Price Range</th>
@@ -53,15 +53,16 @@
                 <th{% if column_interests['validated'] %} class="highlight"{% endif %}>Validated Parking</th>
                 <th{% if column_interests['garage'] %} class="highlight"{% endif %}>Garage Parking</th>
                 <th{% if column_interests['lot'] %} class="highlight"{% endif %}>Lot Parking</th>
-                <th{% if column_interests['Alcohol'] %} class="highlight"{% endif %}>Alcohol</th>
+                <th{% if column_interests['Alcohol'] %} class="highlight"{% endif %}>Alcohol</th> -->
+                <th>refine</th>
             </tr>
             {% for index, row in restaurants.iterrows() %}
                 <tr>
                     <td>{{ row['name'] }}</td>
-                    <td{% if column_interests['state'] %} class="highlight"{% endif %}>{{ row['state'] }}</td>
-                    <td{% if column_interests['city'] %} class="highlight"{% endif %}>{{ row['city'] }}</td>
+                    <!-- <td{% if column_interests['state'] %} class="highlight"{% endif %}>{{ row['state'] }}</td>
+                    <td{% if column_interests['city'] %} class="highlight"{% endif %}>{{ row['city'] }}</td> -->
                     <td{% if column_interests['stars_x'] %} class="highlight"{% endif %}>{{ row['stars_x'] }}</td>
-                    <td{% if column_interests['RestaurantsTakeOut'] %} class="highlight"{% endif %}>{{ row['RestaurantsTakeOut'] }}</td>
+                    <!-- <td{% if column_interests['RestaurantsTakeOut'] %} class="highlight"{% endif %}>{{ row['RestaurantsTakeOut'] }}</td>
                     <td{% if column_interests['RestaurantsDelivery'] %} class="highlight"{% endif %}>{{ row['RestaurantsDelivery'] }}</td>
                     <td{% if column_interests['BusinessAcceptsCreditCards'] %} class="highlight"{% endif %}>{{ row['BusinessAcceptsCreditCards'] }}</td>
                     <td{% if column_interests['RestaurantsPriceRange2'] %} class="highlight"{% endif %}>{{ row['RestaurantsPriceRange2'] }}</td>
@@ -74,7 +75,8 @@
                     <td{% if column_interests['validated'] %} class="highlight"{% endif %}>{{ row['validated'] }}</td>
                     <td{% if column_interests['garage'] %} class="highlight"{% endif %}>{{ row['garage'] }}</td>
                     <td{% if column_interests['lot'] %} class="highlight"{% endif %}>{{ row['lot'] }}</td>
-                    <td{% if column_interests['Alcohol'] %} class="highlight"{% endif %}>{{ row['Alcohol'] }}</td>
+                    <td{% if column_interests['Alcohol'] %} class="highlight"{% endif %}>{{ row['Alcohol'] }}</td> -->
+                    <td>{{ row['refine'] }}</td>
                 </tr>
             {% endfor %}
         </table>
