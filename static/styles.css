@@ -1,13 +1,15 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  background-color: #cbe4f9;
   padding: 20px;
 }
+
 
 h1 {
   color: #333;
   font-size: 32px;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 p {
@@ -18,10 +20,12 @@ p {
 }
 
 form {
-  background-color: #fff;
+  background-color: #eff5e1;
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding-bottom:50px;
 }
 
 label {
@@ -30,8 +34,40 @@ label {
   margin-bottom: 10px;
 }
 
+
+
 select {
+  /* Existing styles */
   height: 40px;
+  appearance: none; /* Removes default dropdown arrow */
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #f0eaea;
+  border-radius: 4px;
+  width: 100%;
+  background-color: #875ad3;
+  background-image: linear-gradient(to bottom, #e865d2, #e9cde0); /* Gradient background */
+  outline: none;
+  box-shadow: 0 0 30px 5px rgba(6, 146, 164, 0.3); /* Add a subtle box shadow on focus */
+}
+
+
+/* Hover styles */
+select:hover {
+  background-image: linear-gradient(to bottom, #f5f5f5, #e1ee9e); /* Gradient background on hover */
+  border-color: #aaa;
+}
+
+Focus styles
+select:focus {
+  outline: none;
+  box-shadow: 0 0 30px rgba(203, 219, 221, 0.3); /* Add a subtle box shadow on focus */
+}
+
+/* Disabled styles */
+select:disabled {
+  opacity: 0.5; /* Reduce opacity for disabled dropdowns */
+  cursor: not-allowed;
 }
 
 .container {
@@ -86,12 +122,13 @@ input[type="submit"] {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  
 }
 
 
 
 input[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: #efb14c;
 }
 
 button {
@@ -101,12 +138,8 @@ button {
   color: #fff;
   border: none;
   cursor: pointer;
+  margin: 0 auto;
+  
 }
 
-h1 {
-  text-align: center;
-}
 
-body {
-  background-color: #f1f1f1;
-}

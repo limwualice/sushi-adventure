@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pizza Restaurant Recommender</title>
+    <title>Pizza Adventure</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -134,15 +134,15 @@
                     <option value='NV'>NV</option>
                     <option value='LA'>LA</option>
                     <option value="I don't care" selected>I don't care</option>
-                </select>
-            <!-- </div> -->
+                </select><br>
 
-            <!-- <div class="grid-item"></div> -->
                 <label for="city">City:</label>
-                <input type="text" id="city" name="city" placeholder="Enter city name">
-            <!-- </div> -->
+                <input type="text" id="city" name="city" placeholder="Enter city name"><br>
 
-            <!-- <div class="grid-item"> -->
+                
+            </div>
+
+            <div class="grid-item">
                 <label for="stars_x">Rating:</label>
                 <select id="stars_x" name="stars_x">
                     <option value=1>1</option>
@@ -155,34 +155,8 @@
                     <option value=4.5>4.5</option>
                     <option value=5>5</option>
                     <option value="I don't care" selected>I don't care</option>
-                </select>
-            </div>
+                </select><br>
 
-            <div class="grid-item">
-                <label for="RestaurantsTakeOut">Take out</label>
-                <select id="RestaurantsTakeOut" name="RestaurantsTakeOut">
-                    <option value="Yes">Yes</option>
-                    <option value="I don't care" selected>I don't care</option>
-                </select>
-            <!-- </div> -->
-
-            <!-- <div class="grid-item"> -->
-                <label for="RestaurantsDelivery">Delivery</label>
-                <select id="RestaurantsDelivery" name="RestaurantsDelivery">
-                    <option value="Yes">Yes</option>
-                    <option value="I don't care" selected>I don't care</option>
-                </select>
-            <!-- </div> -->
-
-            <!-- <div class="grid-item"> -->
-                <label for="BusinessAcceptsCreditCards">Accepts Credit Cards</label>
-                <select id="BusinessAcceptsCreditCards" name="BusinessAcceptsCreditCards">
-                    <option value="Yes">Yes</option>
-                    <option value="I don't care" selected>I don't care</option>
-                </select>
-            </div>
-
-            <div class="grid-item">
                 <label for="RestaurantsPriceRange2">Price Range ($-$$$$)</label>
                 <select id="RestaurantsPriceRange2" name="RestaurantsPriceRange2">
                     <option value=1>$</option>
@@ -190,87 +164,138 @@
                     <option value=3>$$$</option>
                     <option value=4>$$$$</option>
                     <option value="I don't care" selected>I don't care</option>
-                </select>
-            <!-- </div> -->
+                </select><br>
+        
+                
+            </div>
 
-            <!-- <div class="grid-item"> -->
+
+
+
+
+
+
+
+
+            <div class="grid-item">
+                <label for="RestaurantsTakeOut">Take out</label>
+                <select id="RestaurantsTakeOut" name="RestaurantsTakeOut">
+                    <option value="Yes">Yes</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select><br>
+    
+                <label for="RestaurantsDelivery">Delivery</label>
+                <select id="RestaurantsDelivery" name="RestaurantsDelivery">
+                    <option value="Yes">Yes</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select><br>
+ 
+                <label for="BusinessAcceptsCreditCards">Accepts Credit Cards</label>
+                <select id="BusinessAcceptsCreditCards" name="BusinessAcceptsCreditCards">
+                    <option value="Yes">Yes</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select><br>
+            </div>
+
+
+
+
+
+
+
+           
+
+
+
+
+
+
+            <div class="grid-item">
+
                 <label for="RestaurantsReservations">Reservations</label>
                 <select id="RestaurantsReservations" name="RestaurantsReservations">
                     <option value="Yes">Yes</option>
                     <option value="I don't care" selected>I don't care</option>
-                </select>
-            <!-- </div> -->
-
-            <!-- <div class="grid-item"> -->
+                </select><br>
+  
                 <label for="RestaurantsGoodForGroups">Good for groups</label>
                 <select id="RestaurantsGoodForGroups" name="RestaurantsGoodForGroups">
                     <option value="Yes">Yes</option>
                     <option value="I don't care" selected>I don't care</option>
-                </select>
-            </div>
+                </select><br>
 
-            <div class="grid-item">
-                <label for="HasTV">Has a TV</label>
-                <select id="HasTV" name="HasTV">
-                    <option value="Yes">Yes</option>
-                    <option value="I don't care" selected>I don't care</option>
-                </select>
-            <!-- </div> -->
-
-            <!-- <div class="grid-item"> -->
+                
+  
                 <label for="GoodForKids">Good for kids</label>
                 <select id="GoodForKids" name="GoodForKids">
                     <option value="Yes">Yes</option>
                     <option value="I don't care" selected>I don't care</option>
-                </select>
-            <!-- </div> -->
+                </select><br>
 
-            <!-- <div class="grid-item"> -->
+                
+            </div>
+
+
+
+
+
+
+            <div class="grid-item">
                 <label for="valet">Has Valet</label>
                 <select id="valet" name="valet">
                     <option value="Yes">Yes</option>
                     <option value="I don't care" selected>I don't care</option>
-                </select>
+                </select><br>
+        
+                <label for="validated">Has Validated Parking</label>
+                <select id="validated" name="validated">
+                    <option value="Yes">Yes</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select><br>
+          
+                <label for="garage">Has Garage Parking</label>
+                <select id="garage" name="garage">
+                    <option value="Yes">Yes</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select><br>
+
+                <label for="lot">Has Lot Parking</label>
+                <select id="lot" name="lot">
+                    <option value="Yes">Yes</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select><br>
             </div>
+
+
+
+
+
+
+
             <div class="grid-item">
+
+                <label for="HasTV">Has a TV</label>
+                <select id="HasTV" name="HasTV">
+                    <option value="Yes">Yes</option>
+                    <option value="I don't care" selected>I don't care</option>
+                </select><br>
                 <label for="RestaurantsAttire">RestaurantsAttire</label>
                 <select id="RestaurantsAttire" name="RestaurantsAttire">
                     <option value="casual">Casual</option>
                     <option value="formal">Formal</option>
                     <option value="I don't care" selected>I don't care</option>
-                </select>
-            <!-- </div> -->
-
-            <!-- <div class="grid-item"> -->
-                <label for="validated">Has Validated Parking</label>
-                <select id="validated" name="validated">
-                    <option value="Yes">Yes</option>
-                    <option value="I don't care" selected>I don't care</option>
-                </select>
-            <!-- </div> -->
-            <!-- <div class="grid-item"> -->
-                <label for="garage">Has Garage Parking</label>
-                <select id="garage" name="garage">
-                    <option value="Yes">Yes</option>
-                    <option value="I don't care" selected>I don't care</option>
-                </select>
-            </div>
-            <div class="grid-item">
-                <label for="lot">Has Lot Parking</label>
-                <select id="lot" name="lot">
-                    <option value="Yes">Yes</option>
-                    <option value="I don't care" selected>I don't care</option>
-                </select>
-            <!-- </div> -->
-            <!-- <div class="grid-item"> -->
+                </select><br>
+            
                 <label for="Alcohol">Has Alcohol</label>
                 <select id="Alcohol" name="Alcohol">
                     <option value="beer_and_wine">Has Beer and Wine</option>
                     <option value="full_bar">Has a Full Bar</option>
                     <option value="I don't care" selected>I don't care</option>
-                </select>
+
+                </select><br>
             </div>
         </div>
+        <p><br><br></p>
         <input type="submit" value="FIND PIZZA">
     </form>
 </body>
